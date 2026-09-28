@@ -1,4 +1,4 @@
-# AAPL Stock Direction Prediction
+# AAPL-Predictive Analytics for Stock Market Movements
 
 A machine learning project to predict whether **Apple (AAPL)** stock is likely to move **up or down on the following trading day**, using historical price, volume, and technical indicators.
 
