@@ -20,7 +20,6 @@ The project follows a complete data analytics and machine learning workflow:
 **Data → Cleaning → EDA → Feature Engineering → Modeling → Evaluation → Insights**
 
 ---
-
 ## Dataset
 
 The dataset contains historical stock market data for Apple Inc. (AAPL).
@@ -58,11 +57,9 @@ Dataset source: [Kaggle — Price-Volume Data for All US Stocks & ETFs](https://
 * **Jupyter Notebook** — Analysis and experimentation
 
 ---
-
 ## Project Workflow
 
-### 1. Data Preparation
-
+# 1. Data Preparation
 The AAPL dataset was loaded into Python and prepared for analysis.
 
 Key steps included:
@@ -74,8 +71,7 @@ Key steps included:
 * Checking missing values and duplicates
 * Validating price and volume values
 
-### 2. Exploratory Data Analysis
-
+# 2. Exploratory Data Analysis
 I explored the historical behavior of AAPL using:
 
 * Closing price trend
@@ -85,8 +81,7 @@ I explored the historical behavior of AAPL using:
 
 These visualizations helped understand the underlying characteristics of the stock before building the model.
 
-### 3. Feature Engineering
-
+# 3. Feature Engineering
 Several technical indicators and historical features were created:
 
 | Feature            | Description                    |
@@ -101,8 +96,7 @@ Several technical indicators and historical features were created:
 
 These features were used as inputs for the classification model.
 
-### 4. Target Creation
-
+# 4. Target Creation
 The target variable represents the **next trading day's price direction**.
 
 ```text
@@ -112,9 +106,8 @@ Target = 0 → Next day's Close ≤ Today's Close
 
 This converts the problem into a binary classification task.
 
-### 5. Train/Test Split
-
-Because stock data is time-dependent, the dataset was split chronologically rather than randomly.
+# 5. Train/Test Split
+That iBecause stock data is time-dependent, the dataset was split chronologically rather than randomly.
 
 * **80%** → Training data
 * **20%** → Test data
@@ -122,9 +115,8 @@ Because stock data is time-dependent, the dataset was split chronologically rath
 
 This helps prevent future information from being used during model training.
 
-### 6. Model
-
-I used a **Random Forest Classifier** with:
+# 6. Model
+It used a **Random Forest Classifier** with:
 
 ```text
 n_estimators = 100
@@ -134,9 +126,7 @@ max_depth = 10
 Random Forest was selected because it can capture non-linear relationships between multiple technical indicators without requiring strong assumptions about the data.
 
 ---
-
 # Results
-
 The model was evaluated on **506 trading days**.
 
 | Metric           |    Result |
@@ -147,8 +137,7 @@ The model was evaluated on **506 trading days**.
 | Precision — Up   |      0.63 |
 | Recall — Up      |      0.14 |
 
-### Confusion Matrix
-
+# Confusion Matrix
 | Actual / Predicted | Down | Up |
 | ------------------ | ---: | -: |
 | **Down**           |  209 | 22 |
@@ -161,7 +150,6 @@ Although the model achieved relatively high recall for downward movements, it id
 ---
 
 ## What I Learned From the Results
-
 One of the most useful outcomes of this project was that the model **did not produce a strong predictive signal**.
 
 An accuracy of **48.8%** is close to random guessing for a balanced binary direction problem. More importantly, the confusion matrix shows that overall accuracy alone does not tell the full story.
@@ -178,9 +166,7 @@ This was an important learning point: **building a machine learning model does n
 The experiment suggests that price, volume, and the selected technical indicators were not sufficient to reliably predict AAPL's next-day direction during this period.
 
 ---
-
-## Feature Importance
-
+# Feature Importance
 The Random Forest feature importance analysis indicated that features such as **RSI and short-term moving averages** were among the more influential variables used by the model.
 
 However, feature importance should not be interpreted as proof that a feature can independently predict future prices.
@@ -188,29 +174,25 @@ However, feature importance should not be interpreted as proof that a feature ca
 The overall model performance remained weak despite using these indicators.
 
 ---
-
-## Key Takeaways
-
-### 1. Next-day stock direction is difficult to predict
+# Key Takeaways
+## 1. Next-day stock direction is difficult to predict
 
 Short-term market movements contain substantial noise and can be influenced by information that is not present in historical OHLCV data.
 
-### 2. Accuracy is not enough
+## 2. Accuracy is not enough
 
 Looking only at the 48.8% accuracy would hide the model's strong class bias. Precision, recall, and the confusion matrix provided a much clearer picture of model behavior.
 
-### 3. Technical indicators have limitations
+## 3. Technical indicators have limitations
 
 Moving averages, RSI, volatility, and lagged features can describe historical market behavior, but they did not provide enough information to reliably predict the next day's direction in this experiment.
 
-### 4. A failed prediction model can still be a successful analytics project
+## 4. A failed prediction model can still be a successful analytics project
 
 The project helped demonstrate the complete machine learning workflow while also showing the importance of **testing assumptions rather than assuming a model will work**.
 
 ---
-
 # Limitations
-
 This project has several limitations:
 
 * Only price and volume-based information was used.
@@ -230,7 +212,6 @@ Most importantly, historical model performance does not guarantee future perform
 There are several directions that could make the analysis more comprehensive.
 
 ### Market & External Data
-
 Add features such as:
 
 * News sentiment
@@ -241,7 +222,6 @@ Add features such as:
 * Sector performance
 
 ### Alternative Targets
-
 Instead of predicting the next day's direction, experiment with:
 
 * 5-day direction
@@ -250,7 +230,6 @@ Instead of predicting the next day's direction, experiment with:
 * Volatility prediction
 
 ### Model Improvements
-
 Compare multiple approaches:
 
 * Logistic Regression
@@ -262,7 +241,6 @@ Compare multiple approaches:
 Hyperparameter tuning and proper time-series cross-validation could also be explored.
 
 ### Better Baselines
-
 The model should also be compared with simple strategies such as:
 
 * Always predicting the majority class
@@ -296,11 +274,7 @@ AAPL-Stock-Direction-Prediction/
     ├── confusion_matrix.png
     └── prediction_vs_actual.png
 ```
-
----
-
 # Visualizations
-
 The project includes visualizations covering:
 
 * AAPL historical price trend
@@ -312,9 +286,7 @@ The project includes visualizations covering:
 * Actual vs predicted direction
 
 ---
-
 # Conclusion
-
 This project explored whether historical AAPL price and volume information could be used to predict next-day stock direction with a Random Forest classifier.
 
 The model achieved **49.8% accuracy**, but the detailed evaluation showed a strong bias toward predicting downward movements and poor recall for upward movements.
@@ -337,14 +309,8 @@ This project strengthened my understanding of:
 ---
 
 ## Disclaimer
-
 This project is intended for **educational and portfolio purposes only**.
 
 It is not financial or investment advice. The model should not be used to make real-world trading or investment decisions.
 
----
 
-## Author
-
-**Nemuri Sathwik Goud**
-Data Analytics Intern — Techn Global
